@@ -1,0 +1,2 @@
+# CPSC350_FA21_ASSIGNMENT1_TANG
+Tutnese Translation
