@@ -4,6 +4,8 @@ Katie Tang
 htang@chapman.edu
 CPSC-250-02
 Assignment 1: Tutnese Translation 
+Model.cpp uses switch statements to assign each english character
+to it's Tutnese counter part.
 */
  
 #include <iostream>
@@ -12,43 +14,46 @@ Assignment 1: Tutnese Translation
 using namespace std;
 
 Model::Model(){
-//constructor
+//default constructor
 }
 Model::~Model(){
-//destructor
+//default destructor
 }
 
-string Model::wordParser(std::string fullWord){
-    cout << "here" << endl;
-    std::string translatedWord = "";
-    //for char in fullstring
-    for (int i = 0; i < fullWord.length(); ++i){
-        char curr = fullWord[i];
+/* wordParser function takes in an english word and
+determines how to translate each char. It returns the translated word.*/
+string Model::wordParser(std::string *fullWord){
+    string *testfullWord = fullWord;
+    string translatedWord = "";
+    //for char in word
+    for (int i = 0; i < testfullWord->length(); ++i){
+        string *test1 = testfullWord;
+        string curr = test1[i];
+        
     // check if vowel
-        if (curr == 'a' || 'A' || 'e' || 'E' || 'i' || 'I' || 'o'|| 'O' || 'U' || 'u'){
+        if (curr == "a" || "A" || "e" || "E" || "i" || "I" || "O"|| "O" || "U" || "u"){
             //if double translate vowel double
 
-            if (curr == fullWord[i+1]){
-                translatedWord += this->translateDoubleVowel(curr);
+            if (curr == testfullWord[i+1]){
+                translatedWord += this->translateDoubleVowel(curr[0]);
                 ++i;
             }
              //if single translate vowel single
             else{
-                translatedWord += this->translateSingleVowel(curr);
+                translatedWord += this->translateSingleVowel(curr[0]);
             }
             
         }
     // else if regular
         else {
             //if double translate regular double
-            //if (fullWord[i+1] != NULL)
-            if (curr == fullWord[i+1]) {
-                translatedWord += this->translateDoubleCharacter(curr);
+            if (curr == testfullWord[i+1]) {
+                translatedWord += this->translateDoubleCharacter(curr[0]);
                 ++i;
             }
             //if single translate regular single 
             else {
-                translatedWord += this->translateSingleCharacter(curr);
+                translatedWord += this->translateSingleCharacter(curr[0]);
             }
             
         }
@@ -56,6 +61,8 @@ string Model::wordParser(std::string fullWord){
     return translatedWord;  
 }
 
+/* translateDoubleCharacter function takes in a non-vowel char that is 
+repeated. It returns the translated char.*/
 std::string Model::translateDoubleCharacter(char doubleChar){
     std::string translatedChar = "";
     switch (doubleChar){
@@ -237,6 +244,8 @@ std::string Model::translateDoubleCharacter(char doubleChar){
 
 }
 
+/* translateSingleCharacer function takes in a non-vowel char.
+ It returns the translated char.*/
 std::string Model::translateSingleCharacter(char singleChar){
     std::string translatedChar = "";
     switch (singleChar){
@@ -415,6 +424,10 @@ std::string Model::translateSingleCharacter(char singleChar){
 
     return translatedChar;
 }
+
+
+/* translateDoubleVowel function takes in a repeated vowel char.
+ It returns the translated char.*/
 std::string Model::translateDoubleVowel(char doubleVowel){
     std::string translatedChar = "";
     switch (doubleVowel) {
@@ -469,6 +482,9 @@ std::string Model::translateDoubleVowel(char doubleVowel){
     return translatedChar;
 
 }
+
+/* translateSingleVowel function takes in a repeated vowel char.
+ It returns the translated char.*/
 std::string Model::translateSingleVowel(char singleVowel){
     std::string translatedChar = "";
     switch (singleVowel) {

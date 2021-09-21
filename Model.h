@@ -20,7 +20,7 @@ class Model{
     std::string translateSingleCharacter( char );
     std::string translateDoubleCharacter( char );
 
-    std::string wordParser( std::string fullWord);
+    std::string wordParser( std::string *fullWord);
     std::string translateSingleVowel( char );
     std::string translateDoubleVowel( char );
 

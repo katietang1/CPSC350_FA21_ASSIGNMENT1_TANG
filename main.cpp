@@ -3,7 +3,7 @@ Katie Tang
 2313452
 htang@chapman.edu
 CPSC-250-02
-Assignment 1: Tutnese Translation 
+Assignment 1: Tutnese Translation
 */
 #include <iostream>
 #include <fstream>
@@ -16,6 +16,7 @@ int main (int arg, char** argv){
    cout << "Please enter the name of the file you would like translated: " << endl;
    std::string fileName;
    cin >> fileName;
+   //Instantiate FileProcessor
    FileProcessor *fp = new FileProcessor(fileName);
    fp->startTranslation();
 
